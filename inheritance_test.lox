@@ -1,0 +1,55 @@
+class Doughnut {
+  cook() { print "Fry until golden brown."; }
+}
+class BostonCream < Doughnut {}
+BostonCream().cook();
+
+class Doughnut2 {
+  cook() { print "Fry until golden brown."; }
+}
+class BostonCream2 < Doughnut2 {
+  cook() {
+    super.cook();
+    print "Pipe full of custard and coat with chocolate.";
+  }
+}
+BostonCream2().cook();
+
+class A {
+  method() { print "A method"; }
+}
+class B < A {
+  method() { print "B method"; }
+  test() { super.method(); }
+}
+class C < B {}
+C().test();
+
+class P { init(n) { this.n = n; } get() { return this.n; } }
+class Q < P { init(n) { super.init(n * 2); } }
+print Q(4).get();
+
+// ch 13 q2
+class Doughnut3 {
+  cook() {
+    print "Fry until golden brown.";
+    inner();
+  }
+}
+class BostonCream3 < Doughnut3 {
+  cook() {
+    print "Pipe full of custard and coat with chocolate.";
+  }
+}
+BostonCream3().cook();
+// Fry until golden brown.
+// Pipe full of custard and coat with chocolate.
+
+// ch 13 q3
+var a = Array(3);
+print a;            // [nil, nil, nil]
+print a.length;     // 3
+a.set(0, 10);
+a.set(2, "x");
+print a.get(0);     // 10
+print a;            // [10, nil, x]
